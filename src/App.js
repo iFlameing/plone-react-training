@@ -1,8 +1,10 @@
+import "./App.css";
+
 function App() {
   return (
     <ul>
-      <li>
-        <h2>What does the Plone Foundation do?</h2>
+      <li className="faq-item">
+        <h2 className="question">What does the Plone Foundation do?</h2>
         <p>
           The mission of the Plone Foundation is to protect and promote Plone.
           The Foundation provides marketing assistance, awareness, and
@@ -13,8 +15,8 @@ function App() {
           Project.
         </p>
       </li>
-      <li>
-        <h2>Why does Plone need a Foundation?</h2>
+      <li className="faq-item">
+        <h2 className="question">Why does Plone need a Foundation?</h2>
         <p>
           Plone has reached critical mass, with enterprise implementations and
           worldwide usage. The Foundation is able to speak for Plone, and
