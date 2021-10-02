@@ -1,0 +1,7 @@
+.faq-item {
+  list-style-type: none;
+}
+
+.question {
+  text-decoration: underline;
+}
