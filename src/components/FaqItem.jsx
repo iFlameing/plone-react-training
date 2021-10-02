@@ -1,4 +1,5 @@
 import "./FaqItem.css";
+import PropTypes from "prop-types";
 
 const FaqItem = (props) => {
   return (
@@ -7,6 +8,11 @@ const FaqItem = (props) => {
       <p>{props.answer}</p>
     </li>
   );
+};
+
+FaqItem.propTypes = {
+  question: PropTypes.string.isRequired,
+  answer: PropTypes.string.isRequired,
 };
 
 export default FaqItem;
