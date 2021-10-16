@@ -31,6 +31,13 @@ function App() {
     setQuestion(e.target.value);
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    setFaqList([...faqList, { question, answer }]);
+    setQuestion("");
+    setAnswer("");
+  };
+
   return (
     <div>
       <ul>
@@ -43,7 +50,7 @@ function App() {
           />
         ))}
       </ul>
-      <form>
+      <form onSubmit={onSubmit}>
         <label>
           Question:{" "}
           <input
