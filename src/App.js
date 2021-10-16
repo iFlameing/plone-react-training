@@ -21,16 +21,27 @@ function App() {
   };
 
   return (
-    <ul>
-      {faqList.map((item, index) => (
-        <FaqItem
-          question={item.question}
-          answer={item.answer}
-          index={index}
-          onDelete={onDelete}
-        />
-      ))}
-    </ul>
+    <div>
+      <ul>
+        {faqList.map((item, index) => (
+          <FaqItem
+            question={item.question}
+            answer={item.answer}
+            index={index}
+            onDelete={onDelete}
+          />
+        ))}
+      </ul>
+      <form>
+        <label>
+          Question: <input name="question" type="text" />
+        </label>
+        <label>
+          Answer: <textarea name="answer" />
+        </label>
+        <input type="submit" value="Add" />
+      </form>
+    </div>
   );
 }
 
