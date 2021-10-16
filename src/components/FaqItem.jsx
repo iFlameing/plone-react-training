@@ -8,7 +8,9 @@ const FaqItem = (props) => {
   const toggle = () => {
     setAnswer(!isAnswer);
   };
-  const ondelete = () => {};
+  const ondelete = () => {
+    props.onDelete(props.index);
+  };
 
   return (
     <li className="faq-item">
@@ -24,6 +26,8 @@ const FaqItem = (props) => {
 FaqItem.propTypes = {
   question: PropTypes.string.isRequired,
   answer: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
 export default FaqItem;

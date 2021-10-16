@@ -14,10 +14,19 @@ function App() {
     },
   ]);
 
+  const onDelete = (index) => {
+    console.log(index);
+  };
+
   return (
     <ul>
-      {faqList.map((item) => (
-        <FaqItem question={item.question} answer={item.answer} />
+      {faqList.map((item, index) => (
+        <FaqItem
+          question={item.question}
+          answer={item.answer}
+          index={index}
+          onDelete={onDelete}
+        />
       ))}
     </ul>
   );
