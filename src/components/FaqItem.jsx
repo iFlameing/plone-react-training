@@ -8,6 +8,7 @@ const FaqItem = (props) => {
   const toggle = () => {
     setAnswer(!isAnswer);
   };
+  const ondelete = () => {};
 
   return (
     <li className="faq-item">
@@ -15,6 +16,7 @@ const FaqItem = (props) => {
         {props.question}
       </h2>
       {isAnswer && <p>{props.answer}</p>}
+      <button onClick={ondelete}>Delete</button>
     </li>
   );
 };
