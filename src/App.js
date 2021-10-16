@@ -15,7 +15,9 @@ function App() {
   ]);
 
   const onDelete = (index) => {
-    console.log(index);
+    let faq = [...faqList];
+    faq.splice(index, 1);
+    setFaqList(faq);
   };
 
   return (
