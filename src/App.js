@@ -14,10 +14,21 @@ function App() {
     },
   ]);
 
+  const [question, setQuestion] = useState("");
+  const [answer, setAnswer] = useState("");
+
   const onDelete = (index) => {
     let faq = [...faqList];
     faq.splice(index, 1);
     setFaqList(faq);
+  };
+
+  const onChangeAnswer = (e) => {
+    setAnswer(e.target.value);
+  };
+
+  const onChangeQuestion = (e) => {
+    setQuestion(e.target.value);
   };
 
   return (
@@ -34,10 +45,17 @@ function App() {
       </ul>
       <form>
         <label>
-          Question: <input name="question" type="text" />
+          Question:{" "}
+          <input
+            name="question"
+            type="text"
+            value={question}
+            onChange={onChangeQuestion}
+          />
         </label>
         <label>
-          Answer: <textarea name="answer" />
+          Answer:{" "}
+          <textarea name="answer" value={answer} onChange={onChangeAnswer} />
         </label>
         <input type="submit" value="Add" />
       </form>
