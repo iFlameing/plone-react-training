@@ -31,6 +31,12 @@ function App() {
     setQuestion(e.target.value);
   };
 
+  const onEdit = (index, question, answer) => {
+    const faq = [...faqList];
+    faq[index] = { question, answer };
+    setFaqList(faq);
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
     setFaqList([...faqList, { question, answer }]);
@@ -47,6 +53,7 @@ function App() {
             answer={item.answer}
             index={index}
             onDelete={onDelete}
+            onEdit={onEdit}
           />
         ))}
       </ul>

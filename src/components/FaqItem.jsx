@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 const FaqItem = (props) => {
   const [isAnswer, setAnswer] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
+  const [question, setQuestion] = useState("");
+  const [answer, setQuestionAnswer] = useState("");
 
   const toggle = () => {
     setAnswer(!isAnswer);
@@ -15,11 +17,21 @@ const FaqItem = (props) => {
 
   const onEdit = () => {
     setIsEditMode(true);
+    setQuestionAnswer(props.answer);
+    setQuestion(props.question);
+  };
+
+  const onChangeAnswer = (e) => {
+    setQuestionAnswer(e.target.value);
+  };
+  const onChangeQuestion = (e) => {
+    setQuestion(e.target.value);
   };
 
   const onSave = (e) => {
     e.preventDefault();
     setIsEditMode(false);
+    props.onEdit(props.index, question, answer);
   };
 
   return (
@@ -29,11 +41,19 @@ const FaqItem = (props) => {
           <form onSubmit={onSave}>
             <label>
               Question:
-              <input name="question" />
+              <input
+                name="question"
+                value={question}
+                onChange={onChangeQuestion}
+              />
             </label>
             <label>
               Answer:
-              <textarea name="answer" />
+              <textarea
+                name="answer"
+                value={answer}
+                onChange={onChangeAnswer}
+              />
             </label>
             <input type="submit" value="Save" />
           </form>
@@ -57,6 +77,7 @@ FaqItem.propTypes = {
   answer: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   onDelete: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired,
 };
 
 export default FaqItem;
