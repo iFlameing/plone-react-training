@@ -1,26 +1,15 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import { addFaqItem } from "../actions";
 import FaqItem from "./FaqItem";
 
 function Faq() {
-  const [faqList, setFaqList] = useState([
-    {
-      question: "What does the Plone Foundation do?",
-      answer: "The mission of the Plone Foundation is to protect and...",
-    },
-    {
-      question: "Why does Plone need a Foundation?",
-      answer: "Plone has reached critical mass, with enterprise...",
-    },
-  ]);
+  const faqList = useSelector((state) => state.faq);
+  const dispatch = useDispatch();
 
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
-
-  const onDelete = (index) => {
-    let faq = [...faqList];
-    faq.splice(index, 1);
-    setFaqList(faq);
-  };
 
   const onChangeAnswer = (e) => {
     setAnswer(e.target.value);
@@ -30,16 +19,10 @@ function Faq() {
     setQuestion(e.target.value);
   };
 
-  const onEdit = (index, question, answer) => {
-    const faq = [...faqList];
-    faq[index] = { question, answer };
-    setFaqList(faq);
-  };
-
   const onSubmit = (e) => {
     e.preventDefault();
-    setFaqList([...faqList, { question, answer }]);
     setQuestion("");
+    dispatch(addFaqItem(question, answer));
     setAnswer("");
   };
 
@@ -51,8 +34,6 @@ function Faq() {
             question={item.question}
             answer={item.answer}
             index={index}
-            onDelete={onDelete}
-            onEdit={onEdit}
           />
         ))}
       </ul>
