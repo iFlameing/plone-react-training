@@ -15,3 +15,11 @@ export const deleteFaqItem = (index) => ({
   type: "DELETE_FAQ_ITEM",
   index,
 });
+
+export const getFaqItems = () => ({
+  type: "GET_FAQ_ITEMS",
+  request: {
+    op: "get",
+    path: "/",
+  },
+});
