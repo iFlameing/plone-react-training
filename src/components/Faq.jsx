@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { addFaqItem } from "../actions";
+import { addFaqItem, getFaqItems } from "../actions";
 import FaqItem from "./FaqItem";
 
 function Faq() {
@@ -25,6 +25,10 @@ function Faq() {
     dispatch(addFaqItem(question, answer));
     setAnswer("");
   };
+
+  useEffect(() => {
+    dispatch(getFaqItems());
+  });
 
   return (
     <div>
