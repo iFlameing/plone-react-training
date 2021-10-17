@@ -1,18 +1,22 @@
 import { useState } from "react";
-import "./FaqItem.css";
+import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
+
+import { editFaqItem, deleteFaqItem } from "../actions";
+import "./FaqItem.css";
 
 const FaqItem = (props) => {
   const [isAnswer, setAnswer] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
   const [question, setQuestion] = useState("");
   const [answer, setQuestionAnswer] = useState("");
+  const dispatch = useDispatch();
 
   const toggle = () => {
     setAnswer(!isAnswer);
   };
   const ondelete = () => {
-    props.onDelete(props.index);
+    dispatch(deleteFaqItem(props.index));
   };
 
   const onEdit = () => {
@@ -31,7 +35,7 @@ const FaqItem = (props) => {
   const onSave = (e) => {
     e.preventDefault();
     setIsEditMode(false);
-    props.onEdit(props.index, question, answer);
+    dispatch(editFaqItem(props.index, question, answer));
   };
 
   return (
@@ -76,8 +80,6 @@ FaqItem.propTypes = {
   question: PropTypes.string.isRequired,
   answer: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
-  onDelete: PropTypes.func.isRequired,
-  onEdit: PropTypes.func.isRequired,
 };
 
 export default FaqItem;
