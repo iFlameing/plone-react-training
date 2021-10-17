@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 import { editFaqItem, deleteFaqItem } from "../actions";
 import "./FaqItem.css";
@@ -70,6 +71,7 @@ const FaqItem = (props) => {
           {isAnswer && <p>{props.answer}</p>}
           <button onClick={ondelete}>Delete</button>
           <button onClick={onEdit}>Edit</button>
+          <Link to={`/faq/${props.index}`}>View</Link>
         </li>
       )}
     </>

@@ -10,8 +10,6 @@ const FaqItemView = () => {
     state.faq.length ? state.faq[index] : {}
   );
 
-  console.log(useParams);
-
   useEffect(() => {
     dispatch(getFaqItems());
   }, [dispatch]);
