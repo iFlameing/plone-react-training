@@ -28,7 +28,7 @@ function Faq() {
 
   useEffect(() => {
     dispatch(getFaqItems());
-  });
+  }, [dispatch]);
 
   return (
     <div>
