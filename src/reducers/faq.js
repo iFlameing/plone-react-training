@@ -20,6 +20,8 @@ const faq = (state = [], action) => {
       faq = [...state];
       faq.splice(action.index, 1);
       return faq;
+    case "GET_FAQ_ITEMS_SUCCESS":
+      return action.data;
     default:
       return state;
   }
